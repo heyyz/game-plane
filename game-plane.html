@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<link rel="stylesheet" href="dest/css/game-plane.css" />
+		
+		<script src="dest/js/Base.js"></script>
+		<script src="dest/js/common.js"></script>
+		<script src="dest/js/gameEngine.js"></script>
+		<script src="dest/js/myPlane.js"></script>
+		<script src="dest/js/bullet.js"></script>
+		<script src="dest/js/enemy.js"></script>
+		<script src="dest/js/ajax.js"></script>
+		
+		<script>
+			onload = function(){				
+				
+				var ul = document.getElementById("list");
+				var ali = ul.getElementsByTagName("li");
+				
+				for (var i=0; i<ali.length; i++) {
+					ali[i].onclick = function(){
+						//把ul移除
+						ul.parentNode.removeChild(ul);
+						
+						//子弹的发射时间间隔
+						myPlane.fireInterval = this.value-0;
+						
+						//初始化并开始游戏
+						gameEngine.init().start();
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" >
+			<ul id="list">
+				<li value="1000">超级困难</li>
+				<li value="600">非常困难</li>
+				<li value="300">比较困难</li>
+				<li value="100">春哥附体</li>
+			</ul>
+			<div id="score">SCORE:00</div>
+		</div>
+	</body>
+</html>
